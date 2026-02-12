@@ -1,0 +1,7 @@
+## Interface: 50500
+## Title: Spellid
+## Notes: Adds Spell ID and Icon ID to tooltips for spells and items.
+## Author: enjoymygripz
+## Version: 1.1
+## SavedVariables: SpellidDB
+Spellid.lua
