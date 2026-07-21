@@ -7,39 +7,18 @@ local defaults = {
 }
 
 -- Initialisierung der Einstellungen
-local function deepCopy(orig)
-    if type(orig) ~= "table" then return orig end
-    local copy = {}
-    for k, v in pairs(orig) do
-        copy[k] = deepCopy(v)
-    end
-    return copy
-end
-
--- Fallback falls CopyTable in der Client-Version nicht vorhanden ist
-local copyTableFunc = CopyTable or deepCopy
-
-SpellidDB = SpellidDB or copyTableFunc(defaults)
+SpellidDB = SpellidDB or CopyTable(defaults)
 
 local function resetTooltipFlags(tooltip)
     tooltip.hasSpellData = false
     tooltip.hasItemData = false
 end
 
--- Abstraktion, da C_Spell in älteren Clients nicht existiert
-local function GetSpellIconTexture(spellID)
-    if C_Spell and C_Spell.GetSpellTexture then
-        return C_Spell.GetSpellTexture(spellID)
-    end
-    -- Fallback über GetSpellTexture (Classic) oder GetSpellInfo
-    return (GetSpellTexture and GetSpellTexture(spellID)) or select(3, GetSpellInfo(spellID))
-end
-
 local function addSpellInfo(tooltip)
     if tooltip.hasSpellData then return end
     local _, spellID = tooltip:GetSpell()
     if spellID then
-        local icon = GetSpellIconTexture(spellID)
+        local icon = C_Spell.GetSpellTexture(spellID)
         
         if SpellidDB.showSpellID then
             if icon then

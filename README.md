@@ -1,10 +1,11 @@
-# Spellid
+﻿# Spellid
 
 Adds Spell ID and Icon ID to tooltips for spells and items.
 
 ## Information
 
-- **Version:** 1.1
+- **Version:** 1.2
+- **Author:** enjoymygripz
 - **CurseForge:** https://www.curseforge.com/wow/addons/spellid
 
 ## Installation
@@ -15,4 +16,4 @@ Adds Spell ID and Icon ID to tooltips for spells and items.
 
 ## License
 
-See LICENSE file for details.
+See license/LICENSE file if present, otherwise All Rights Reserved by the author.
